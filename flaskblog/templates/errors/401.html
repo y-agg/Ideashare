@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+<div class=" mb-3 align-middle" style="margin-left: 10%;width: 80% ">
+  <img style="width: 60%;margin-left:20% " src="
+  https://cdn.dribbble.com/users/761395/screenshots/6287961/error_401.jpg" alt="Error 401">
+  <div class="card-body">
+    <!-- <h5 class="card-title">Oops. Page Not Found (404)</h5> -->
+    <div class="text-center"> 
+    <p class="card-text ">The 401 Unauthorized error is an HTTP status code that means the page you were trying to access cannot be loaded until you first log in with a valid user ID and password. If you've just logged in and received the 401 Unauthorized error, it means that the credentials you entered were invalid for some reason.</p>
+    <a href="{{ url_for('landing')}}"class="btn btn-outline-danger">Home</a>
+    <a style="margin-left: 2%" href="{{ url_for('home')}}"class="btn btn-outline-danger">Main Page</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

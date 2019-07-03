@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+<div class=" mb-3" style="margin-left: 10%;width: 80%">
+  <img style="width: 60%; margin-left:20% " src="https://cdn.dribbble.com/users/1192256/screenshots/6290585/1._friday.gif" class="card-img-top" alt="Error 403">
+  <div class="card-body">
+    <!-- <h5 class="card-title">Oops. Page Not Found (404)</h5> -->
+    <div class="text-center"> 
+    <p class="card-text ">The 403 Forbidden error is an HTTP status code which means that accessing the page or resource you were trying to reach is absolutely forbidden for some reason. This article contains basic troubleshooting instructions for 403 Forbidden errors.</p>
+    <a href="{{ url_for('landing')}}"class="btn btn-outline-danger">Home</a>
+    <a style="margin-left: 2%" href="{{ url_for('home')}}"class="btn btn-outline-danger">Main Page</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

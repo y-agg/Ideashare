@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class=" mb-3" style="margin-left: 10%;width: 80%">
+  <img style="width: 90%; height:500px;margin-left:5% " src="https://4.bp.blogspot.com/-EbpCtWa8-9I/W6cHJDG7tgI/AAAAAAAAClM/21g-RMCFLBImC6p-ufZZdWeBFwiMvVycgCLcBGAs/s758/500_Error_Log_File_Stack_Trace_Animation.gif" alt="Error 500">
+  <div class="card-body">
+    <div class="text-center"> 
+    <p class="card-text ">The 500 Internal Server Error is a very general HTTP status code that means something has gone wrong on the website's server, but the server could not be more specific on what the exact problem is.</p>
+    <a href="{{ url_for('landing')}}"class="btn btn-outline-danger">Home</a>
+    <a style="margin-left: 2%" href="{{ url_for('home')}}"class="btn btn-outline-danger">Main Page</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

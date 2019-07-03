@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+<div class=" mb-3" style="margin-left: 10%;width: 80%">
+  <img style="width: 60%; height:500px;margin-left:20% " src="https://cdn.dribbble.com/users/149078/screenshots/5570098/websiteerror408.png" class="card-img-top" alt="Error 408">
+  <div class="card-body">
+    <!-- <h5 class="card-title">Oops. Page Not Found (404)</h5> -->
+    <div class="text-center"> 
+    <p class="card-text ">A server SHOULD send the "close" connection option1 in the response, since 408 implies that the server has decided to close the connection rather than continue waiting. If the client has an outstanding request in transit, the client MAY repeat that request on a new connection.</p>
+    <a href="{{ url_for('landing')}}"class="btn btn-outline-danger">Home</a>
+    <a style="margin-left: 2%" href="{{ url_for('home')}}"class="btn btn-outline-danger">Main Page</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+<div class=" mb-3" style="margin-left: 10%;width: 80%">
+  <img style="width: 60%; height:450px;margin-left:20% " src="https://cdn.dribbble.com/users/1192256/screenshots/6308949/3._tuesday.gif" class="card-img-top" alt="Error 504">
+  <div class="card-body">
+    <!-- <h5 class="card-title">Oops. Page Not Found (404)</h5> -->
+    <div class="text-center"> 
+    <p class="card-text ">The 504 Gateway Timeout error is an HTTP status code that means that one server did not receive a timely response from another server that it was accessing while attempting to load the web page or fill another request by the browser.</p>
+    
+    <a href="{{ url_for('landing')}}"class="btn btn-outline-danger">Home</a>
+    <a style="margin-left: 2%" href="{{ url_for('home')}}"class="btn btn-outline-danger">Main Page</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
