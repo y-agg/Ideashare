@@ -1,11 +1,7 @@
 body {
-
-
   font-family: 'Overpass', sans-serif;
   font-size: 16px;
   color: #1c1c1c;
- 
-
 }
 
 .content {
@@ -502,4 +498,12 @@ a.article-title:hover {
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+}
+
+.bimgs{
+     background: url(https://backgrounddownload.com/wp-content/uploads/2018/09/light-bulb-background-hd-7.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

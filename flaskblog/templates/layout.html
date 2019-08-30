@@ -1,18 +1,14 @@
-    
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
+  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Overpass:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=The+Girl+Next+Door" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css'>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mymain.css') }}">
-    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}"> -->
     <script>
       window.console = window.console || function(t) {};
     </script>
@@ -21,181 +17,133 @@
         window.parent.postMessage("resize", "*");
       }
     </script>
+    
     {% block head_style %} {% endblock %}
-    {% if title %}
-        <title>Bulb - {{ title }}</title>
-    {% else %}
-        <title>Bulb</title>
+      {% if title %}
+          <title>Bulb - {{ title }}</title>
+      {% else %}
+          <title>Bulb</title>
     {% endif %}
-
-
 </head>
-<body>
+<body >
  <div class="page">
-
-<nav class="nav">
-
-<div class="nav__close"></div>
-<ul class="nav__list">
-<div>
-  <br><br>
-{% if current_user.is_authenticated %}
-<img style="height: 100px;width: 100px;margin-top: -40%;margin-left: 20%"class="rounded-circle account-img"src="{{ image_file }}">
-<h1><span style="color: white ;font-size: 1em;">Welcome , {{username}}</span></h1> <br>
-{% else %}
-<h1><span style="color: white ;font-size: 1em;">Welcome , User</span></h1> <br>
-{% endif %}
-</div>
-
-<li class="nav__item">
-
-<a class="nav__link" href="{{ url_for('landing')}}" title="Home"><i class="nav__link-icon material-icons">home</i>Home</a>
-</li>
-<li class="nav__item">
-<a class="nav__link" href="{{ url_for('home')}}" title="Home"><i class="nav__link-icon material-icons">home</i>Main</a>
-</li>
-
-
-{% if current_user.is_authenticated %}
-      <li class="nav__item">
-        <a class="nav__link" href="{{ url_for('new_post') }}" title="New Post"><i class="nav__link-icon material-icons">business_center</i>New Post</a>
-      </li>
-      <li class="nav__item">
-        <a class="nav__link" href="{{ url_for('account') }}" title="Account"><i class="nav__link-icon material-icons">perm_identity</i>Account</a>
-      </li>
-      <li class="nav__item">
-        <a class="nav__link" href="{{ url_for('logout') }}" title="Log out"><i class="nav__link-icon material-icons">perm_identity</i>Log out</a>
-      </li>
-{% else %}
-      <li class="nav__item">
-        <a class="nav__link" href="{{ url_for('login') }}" title="Log In"><i class="nav__link-icon material-icons">perm_identity</i>Log In</a>
-      </li>
-      <li class="nav__item">
-        <a class="nav__link" href="{{ url_for('register') }}" title="Sign-up"><i class="nav__link-icon material-icons">perm_identity</i>Sign-up</a>
-      </li>
-{% endif %}
-</ul>
-</nav>
-
-<div class="page__content">
-
-<div class="nav-open-btn" >
-<div class="nav-open-btn__bar" ></div>
-<div class="nav-open-btn__bar" ></div>
-<div class="nav-open-btn__bar" ></div>
- </div>
- {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                  <br>
+    <nav class="nav">
+      <div class="nav__close"></div>
+      <ul class="nav__list">
+        <div>
+          <br><br>
+          {% if current_user.is_authenticated %}
+            <img style="height: 100px;width: 100px;margin-top: -40%;margin-left: 20%"class="rounded-circle account-img"src="{{ image_file }}">
+            <h1><span style="color: white ;font-size: 1em;">Welcome , {{username}}</span></h1> <br>
+          {% else %}
+            <h1><span style="color: white ;font-size: 1em;">Welcome , User</span></h1> <br>
+          {% endif %}
+        </div>
+        <li class="nav__item">
+         <a class="nav__link" href="{{url_for('landing')}}" title="Home"><i class="nav__link-icon material-icons">home</i>Home</a>
+        </li>
+        <li class="nav__item">
+         <a class="nav__link" href="{{ url_for('home')}}" title="Main"><i class="nav__link-icon material-icons">home</i>Main</a>
+        </li>
+        <li class="nav__item">
+         <a class="nav__link" href="{{url_for('about')}}" title="about"><i class="nav__link-icon material-icons">home</i>About</a>
+        </li>
+        {% if current_user.is_authenticated %}
+          <li class="nav__item">
+              <a class="nav__link" href="{{ url_for('new_post') }}" title="New Post"><i class="nav__link-icon material-icons">business_center</i>New Post</a>
+          </li>
+          <li class="nav__item">
+              <a class="nav__link" href="{{ url_for('account') }}" title="Account"><i class="nav__link-icon material-icons">perm_identity</i>Account</a>
+          </li>
+          <li class="nav__item">
+              <a class="nav__link" href="{{ url_for('logout') }}" title="Log out"><i class="nav__link-icon material-icons"> perm_identity</i>Log out</a>
+          </li>
+        {% else %}
+          <li class="nav__item">
+              <a class="nav__link" href="{{ url_for('login') }}" title="Log In"><i class="nav__link-icon material-icons">perm_identity</i>Log In</a>
+          </li>
+          <li class="nav__item">
+              <a class="nav__link" href="{{ url_for('register') }}" title="Sign-up"><i class="nav__link-icon material-icons"> perm_identity</i>Sign-up</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class="page__content">
+        <div class="nav-open-btn" >
+          <div class="nav-open-btn__bar" ></div>
+          <div class="nav-open-btn__bar" ></div>
+          <div class="nav-open-btn__bar" ></div>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+                <br> 
                 <div class="alert alert-{{ category }}" style="width: 80%; margin-left: 10%">
                   {{ message }}
                 </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {% block content %}
 
-{% block content %}
-
- {% endblock %}
-</div>
-</div>  
-
-
- 
-
+        {% endblock %}
+      </div>
+    </div>  
     
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
-<script id="rendered-js">
-var navOpenBtn = document.querySelector('.nav-open-btn');
-var navCloseBtn = document.querySelector('.nav__close');
-var nav = document.querySelector('.nav');
-var pageContent = document.querySelector('.page__content');
-var navList = document.querySelector('.nav__list');
-var page = document.querySelector('.page');
-
-//open nav
-navOpenBtn.addEventListener('click', function () {
-  navOpenBtn.classList.add('js-hidden');
-
-  nav.classList.add('js-opened');
-
-  pageContent.classList.add('js-opened');
-});
-
-//close nav
-navCloseBtn.addEventListener('click', function () {
-  navOpenBtn.classList.remove('js-hidden');
-
-  nav.classList.remove('js-opened');
-
-  pageContent.classList.remove('js-opened');
-});
-
-//closing navigation if click outside it
-page.addEventListener('click', function (e) {
-
-  var evTarget = e.target;
-
-  if (evTarget !== nav && nav.classList.contains('js-opened') && evTarget !== navOpenBtn && evTarget.parentNode !== navOpenBtn) {
-    console.log(navOpenBtn.firstChild);
-
-    navOpenBtn.classList.remove('js-hidden');
-
-    nav.classList.remove('js-opened');
-
-    pageContent.classList.remove('js-opened');
-  }
-
-});
-
-//DEMO CODE - !!!YOU DON'T NEED IT
-var demoBtns = document.querySelectorAll('.demo-btn');
-
-//adding default demo classes
-nav.classList.add('nav--offcanvas-1');
-pageContent.classList.add('page__content--offcanvas-1');
-
-//change demo on btn click
-demoBtns.forEach(function (el, ind) {
-
-  el.addEventListener('click', function () {
-
-    //add active class to active btn
-    demoBtns.forEach(function (el) {
-      el.classList.remove('js-active');
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js">
+  </script>
+  <script id="rendered-js">
+    var navOpenBtn = document.querySelector('.nav-open-btn');
+    var navCloseBtn = document.querySelector('.nav__close');
+    var nav = document.querySelector('.nav');
+    var pageContent = document.querySelector('.page__content');
+    var navList = document.querySelector('.nav__list');
+    var page = document.querySelector('.page');
+    navOpenBtn.addEventListener('click', function () {
+      navOpenBtn.classList.add('js-hidden');
+      nav.classList.add('js-opened');
+      pageContent.classList.add('js-opened');
     });
-
-    this.classList.add('js-active');
-
-    //add proper classes for effects
-    var effClass = ind + 1;
-
-    nav.classList.remove('js-opened');
-
-    pageContent.classList.remove('js-opened');
-
-    navCloseBtn.classList.remove('js-opened');
-
-    navList.classList.remove('js-opened');
-
-    navOpenBtn.classList.remove('js-hidden');
-
-    nav.classList.remove(nav.classList[1]);
-
-    nav.classList.add('nav--offcanvas-' + effClass);
-
-    pageContent.classList.remove(pageContent.classList[1]);
-
-    pageContent.classList.add('page__content--offcanvas-' + effClass);
-
-  });
-
-});
-      //# sourceURL=pen.js
-    </script>
+    navCloseBtn.addEventListener('click', function () {
+      navOpenBtn.classList.remove('js-hidden');
+      nav.classList.remove('js-opened');
+      pageContent.classList.remove('js-opened');
+    });
+    page.addEventListener('click', function (e) {
+      var evTarget = e.target;
+      if(evTarget !== nav && nav.classList.contains('js-opened') && evTarget !== navOpenBtn && evTarget.parentNode !== navOpenBtn) {
+        console.log(navOpenBtn.firstChild);
+        navOpenBtn.classList.remove('js-hidden');
+        nav.classList.remove('js-opened');
+        pageContent.classList.remove('js-opened');
+      }
+    });
+    var demoBtns = document.querySelectorAll('.demo-btn');
+    nav.classList.add('nav--offcanvas-1');
+    pageContent.classList.add('page__content--offcanvas-1');
+    demoBtns.forEach(function (el, ind) {
+      el.addEventListener('click', function () {
+        demoBtns.forEach(function (el) {
+          el.classList.remove('js-active');});
+        this.classList.add('js-active');
+        var effClass = ind + 1;
+        nav.classList.remove('js-opened');
+        pageContent.classList.remove('js-opened');
+        navCloseBtn.classList.remove('js-opened');
+        navList.classList.remove('js-opened');
+        navOpenBtn.classList.remove('js-hidden');
+        nav.classList.remove(nav.classList[1]);
+        nav.classList.add('nav--offcanvas-' + effClass);
+        pageContent.classList.remove(pageContent.classList[1]);
+        pageContent.classList.add('page__content--offcanvas-' + effClass);
+      });
+    });
+  </script>
 </body>
 </html>

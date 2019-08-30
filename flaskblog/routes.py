@@ -9,22 +9,6 @@ from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
-@app.route("/errors")
-def errors():
-    return render_template('errors/408.html')
-
-@app.route("/errors500")
-def adsasd():
-    return render_template('errors/500.html')
-
-@app.route("/errors503")
-def asd():
-    return render_template('errors/503.html')
-
-@app.route("/errors504")
-def errsadsaors():
-    return render_template('errors/504.html')
-
 
 @app.route("/")
 @app.route("/landing")
@@ -46,7 +30,8 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title='About',username=current_user.username)
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('about.html', title='About',username=current_user.username,image_file= image_file)
 
 
 @app.route("/register", methods=['GET', 'POST'])
