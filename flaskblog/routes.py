@@ -9,7 +9,6 @@ from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
-
 @app.route("/")
 @app.route("/landing")
 def landing():
@@ -28,10 +27,6 @@ def home():
     return render_template('home.html', posts=posts ,title='home', image_file= image_file,username=current_user.username)
 
 
-@app.route("/about")
-def about():
-    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
-    return render_template('about.html', title='About',username=current_user.username,image_file= image_file)
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -47,7 +42,6 @@ def register():
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -178,16 +172,15 @@ def send_reset_email(user):
     msg = Message('Password Reset Request',
                   sender='noreply@demo.com',
                   recipients=[user.email])
-    msg.body = f''' Click On the following link to reset password:\n
+    msg.body = f'''To reset your password, click on the following link: \n
 
 {url_for('reset_token', token=token, _external=True)}
 
-This website is made for educational and learning purpose...and also this link is valid for next 30 minutes, So hurry up \n
-regards,
-Bulb Team 
+If You didnt requested for this mail , ignore the email 
+Regards
+Team bulb
 '''
     mail.send(msg)
-
 
 @app.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():
@@ -200,6 +193,8 @@ def reset_request():
         flash('An email has been sent with instructions to reset your password.', 'info')
         return redirect(url_for('login'))
     return render_template('reset_request.html', title='Reset Password', form=form)
+
+
 
 
 @app.route("/reset_password/<token>", methods=['GET', 'POST'])
@@ -219,16 +214,29 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
+
+
 @app.errorhandler(404)
 def error_404(e):
     return render_template('errors/404.html'), 404
-
-
 @app.errorhandler(403)
 def error_403(e):
     return render_template('errors/403.html'), 403
-
-
 @app.errorhandler(500)
 def error_500(e):
     return render_template('errors/500.html'), 500
+@app.errorhandler(400)
+def error_404(e):
+    return render_template('errors/400.html'), 400
+@app.errorhandler(408)
+def error_403(e):
+    return render_template('errors/408.html'), 408
+@app.errorhandler(503)
+def error_500(e):
+    return render_template('errors/503.html'), 503
+@app.errorhandler(504)
+def error_500(e):
+    return render_template('errors/500.html'), 504
+@app.route("/about")
+def about():
+    return render_template('about.html', title='About') 
