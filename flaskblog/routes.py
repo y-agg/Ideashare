@@ -135,7 +135,7 @@ def update_post(post_id):
         db.session.commit()
         image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
         flash('Your post has been updated!', 'success')
-        return redirect(url_for('post', post_id=post.id),image_file=image_file,username=current_user.username)
+        return redirect(url_for('post', post_id=post.id,image_file=image_file,username=current_user.username))
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
